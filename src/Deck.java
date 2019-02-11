@@ -31,16 +31,17 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		cards = new ArrayList<Card>();
 		for (int i = 0; i < values.length; i++) {
 
 		    for (int s = 0; s < suits.length; s++) {
 
-		        cards.add(new Card(ranks[i], suits[s], values[i]);
+		        cards.add(new Card(ranks[i], suits[s], values[i]));
 
             }
         }
         size = cards.size();
-		shuffle(cards);
+		shuffle();
 	}
 
 
@@ -74,8 +75,12 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		Card ex = new Card()
-		return cards.remove((int) (Math.random() * size));
+		if (isEmpty()) {
+			return null;
+		}
+		Card deal = cards.get(size);
+		size--;
+		return deal;
 	}
 
 	/**
